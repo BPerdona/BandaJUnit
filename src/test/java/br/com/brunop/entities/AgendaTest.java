@@ -13,6 +13,7 @@ public class AgendaTest {
 	
 	@BeforeClass
 	public static void antesDeTodos() {
+		System.out.println("Iniciando Agenda");
 		agen1.marcarShow("01-01", "RHCP");
 		agen1.marcarShow("01-02", "Queen");
 		agen1.marcarShow("01-03", "Metallica");
@@ -20,15 +21,15 @@ public class AgendaTest {
 		agen1.marcarShow("01-11", "Alice in Chains");
 	}
 	
-	//Verifica em cada caso se a agenda está ativa
 	@Before
 	public void listaAtiva() {
+		System.out.println("Verificando se agenda está ativa");
 		assumeFalse(agen1.isAtivo()==false);
 	}
 
-	//Agrupamento de assertions
 	@Test
 	public void GroupDesmarcar() {
+		System.out.println("Grupo de assert");
 		assertEquals(true, agen1.desmarcarShow("01-01", "RHCP"));
 		assertEquals(true, agen1.desmarcarShow("01-02", "Queen"));
 		assertEquals(true, agen1.desmarcarShow("01-03", "Metallica"));
@@ -36,9 +37,9 @@ public class AgendaTest {
 		assertEquals(false, agen1.desmarcarShow("11-11", "Alice in Chains"));
 	}
 	
-	//Implementando Timeout
 	@Test(timeout=15)
 	public void GroupMarcar() {
+		System.out.println("Executando AssertArray contendo TimeOut");
 		boolean[] esperado = {false, true, false, true, true, false, false};
 		boolean[] executado = {
 				agen1.marcarShow("02-022", "Nirvana"),
@@ -54,7 +55,9 @@ public class AgendaTest {
 	
 	@AfterClass
 	public static void contarShows() {
-		//Após executar todos os testes apenas 4 shows ficaram marcados
+		System.out.println("Contando todos os show");
 		assertEquals(4, agen1.contarShows());
+		System.out.println("Limpando toda a lista");
+		agen1.getAgendamento().clear();
 	}
 }

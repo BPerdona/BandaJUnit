@@ -6,14 +6,21 @@ public class Musico {
 	private int idade;
 	private String instrumento;
 	private int nota;
-	private Double carteira;
+	private String descricao;
 	
 	public Musico(String nome, int idade, String instrumento, int nota) {
 		this.nome = nome;
 		this.idade = idade;
 		this.instrumento = instrumento;
 		this.nota = nota;
-		this.carteira = 0.0;
+	}
+	
+	public Musico(String nome, int idade, String instrumento, int nota, String descricao) {
+		this.nome = nome;
+		this.idade = idade;
+		this.instrumento = instrumento;
+		this.nota = nota;
+		this.descricao = descricao;
 	}
 	
 	public void setNota(int nota) {
@@ -23,12 +30,6 @@ public class Musico {
 		}
 		this.nota = nota;
 		return;
-	}
-	
-	public void receberDinheiro(Double quantidade) {
-		if(quantidade<=0)
-			return;
-		carteira =+ quantidade;
 	}
 
 	public String getNome() {
@@ -59,11 +60,13 @@ public class Musico {
 		return nota;
 	}
 
-	public Double getCarteira() {
-		return carteira;
+	public String getDescricao() {
+		return descricao;
 	}
 
-	public void setCarteira(Double carteira) {
-		this.carteira = carteira;
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
+	
+	
 }
